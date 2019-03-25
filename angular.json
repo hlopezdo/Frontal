@@ -27,7 +27,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/metro4-dist/js/metro.js"
+              "src/assets/myMetro4/metro.js"
             ],
             "es5BrowserSupport": true
           },

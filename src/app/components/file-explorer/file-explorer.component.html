@@ -1,0 +1,18 @@
+<div class="p-2" data-role="window" data-resizable="true" data-draggable="true" 
+                 [attr.data-width]="windowConfig.width" 
+                 [attr.data-height]="windowConfig.height" 
+                 [attr.data-top]="windowConfig.top"
+                 [attr.data-left]="windowConfig.left">
+    <ul data-role="listview" [attr.data-view]="windowConfig.view">
+        <li data-caption="Projects">
+            <ul>
+                <li *ngFor = "let project of listOfProjects" [attr.data-icon]="project.icon" [attr.data-caption]="project.name" (click)="changeView()"></li>
+            </ul>
+        </li>
+        <li data-caption="Courses">
+            <ul>
+                <li *ngFor = "let course of listOfCourses" [attr.data-icon]="course.icon" [attr.data-caption]="course.name"></li>
+            </ul>
+        </li>
+    </ul>
+</div>
