@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { TaskBarComponent } from './task-bar/task-bar.component';
 import { FileExplorerComponent } from './file-explorer/file-explorer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { FileExplorerComponent } from './file-explorer/file-explorer.component';
     FileExplorerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

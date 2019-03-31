@@ -1,0 +1,146 @@
+.mat-card-header,
+.mat-card-header-text {
+  width: 100%;
+}
+
+.fileExplorer {
+  width: 40em;
+  min-height: 25em;
+  position: fixed;
+  border-radius: 0;
+  padding: 0;
+}
+
+.minimizedPosition {
+  bottom: 5em;
+  left: 0;
+  width: 15em;
+  min-height: 0;
+}
+
+.maximizedPosition {
+  top: 5em;
+  left: 5em;
+  width: 40em;
+  min-height: 25em;
+}
+
+.windowTitle {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em 0 0 0.5em;
+  font-size: 15px !important;
+}
+
+.leftWindow {
+  font-size: 0.9em;
+  font-weight: normal;
+  cursor: default;
+}
+
+.rightWindow {
+  margin-left: auto;
+}
+
+.mat-icon.acctionButton:hover {
+  background-color: rgba(100, 100, 255, 0.1);
+  cursor: pointer;
+}
+
+.mat-icon.close:hover {
+  background-color: rgba(224, 11, 11, 0.6);
+  cursor: pointer;
+}
+
+.mat-icon.acctionButton {
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+}
+
+.row.navigationRow {
+  margin: 0;
+  padding: 0;
+}
+
+.navigationButtons {
+  padding: 0;
+  max-width: 85px;
+  min-width: 85px;
+}
+
+.mat-icon.navigationButton:hover {
+  background-color: rgba(100, 100, 255, 0.1);
+  cursor: pointer;
+}
+
+.mat-icon.navigationButton {
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  width: auto;
+}
+
+.navigationSelect {
+  border: 0.1em solid gainsboro;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+
+  width: -webkit-calc(100% - 235px);
+  width: -moz-calc(100% - 235px);
+  width: calc(100% - 235px);
+
+  font-size: 12px;
+}
+
+.navigationSearch {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  max-width: 150px;
+  min-width: 150px;
+  position: absolute;
+  right: 0;
+}
+
+.search {
+  border: 0.1em solid gainsboro;
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+}
+
+.search:focus {
+  text-align: right;
+}
+
+table {
+  width: 100%;
+}
+
+.ng-tns-c6-0 {
+  padding-left: 19px !important;
+}
+
+tr {
+  height: 2em !important;
+}
+
+td {
+  border-bottom: 0 !important;
+}
+
+.tableIcon {
+  font-size: 25px !important;
+  color: orange;
+}
+
+.tableIcon:hover {
+  background-color: inherit;
+}
+
+.tableIconText {
+  position: relative;
+  top: -7px;
+}
+
+.highlight {
+  background-color: rgba(100, 100, 255, 0.1);
+}

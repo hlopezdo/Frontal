@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { WindowConfig } from '../../models/window-config.model';
-import { ProjectsService } from '../../services/projects/projects.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSort, MatTableDataSource} from '@angular/material';
+import { ProjectsService } from 'src/app/services/projects/projects.service';
 import { ElementsOfFolder } from 'src/app/models/elementsOfFolder.model';
 import { CoursesService } from 'src/app/services/courses/courses.service';
 
@@ -9,30 +9,84 @@ import { CoursesService } from 'src/app/services/courses/courses.service';
   templateUrl: './file-explorer.component.html',
   styleUrls: ['./file-explorer.component.css']
 })
-
 export class FileExplorerComponent implements OnInit {
-
-  private listOfCourses: ElementsOfFolder[];
-  private listOfProjects: ElementsOfFolder[];
-  private windowConfig: WindowConfig;
   
-  constructor(projectsService:ProjectsService, coursesService: CoursesService ) {
-    this.windowConfig = {
-      height: 400,
-      width: 600,
-      top: undefined,
-      left: undefined,
-      view: 'tiles'
-    };
+  @ViewChild(MatSort) sort: MatSort;
+  
+  projectsService:ProjectsService;
+  coursesService:CoursesService;
 
-    this.listOfProjects = projectsService.GetListOfProjects();
-    this.listOfCourses = coursesService.GetListOfCourses();
+  backwardList: string[];
+  fordwardList: string[];
+  selectedRow: ElementsOfFolder = null;
+  displayedColumns: string[] = ['name', 'date', 'type', 'size'];
+    
+  dataSource = null;
+  maximized = true;
+
+  constructor(projectsService:ProjectsService, coursesService:CoursesService){
+    this.projectsService = projectsService;    
+    this.coursesService = coursesService;
   }
 
-  ngOnInit() {
+  ngOnInit() {    
+    var elements = this.getElements();
+    this.dataSource = new MatTableDataSource(elements);
+    this.dataSource.sort = this.sort;
   }
 
-  changeView = function(){
-  
+  highlight(row){
+    this.selectedRow = row;
+  }
+
+  minimize(){
+    this.maximized = false;
+  }
+
+  maximize(){
+    this.maximized = true;
+  }
+
+  close(){
+
+  }
+
+  open(row:ElementsOfFolder){
+    var elements = this.getElements(row);
+    if(elements){
+      this.dataSource = new MatTableDataSource(elements);
+      this.dataSource.sort = this.sort;
+    }    
+  }
+
+  backward(){
+
+  }
+
+  forward(){
+
+  }
+
+  up(){
+    var elements = this.getElements(this.selectedRow);
+    if(elements){
+      this.dataSource = new MatTableDataSource(elements);
+      this.dataSource.sort = this.sort;
+    }    
+  }
+
+  private getElements(filter?:ElementsOfFolder):ElementsOfFolder[]{
+    if(filter){
+      if(filter.category === 'project'){
+        return this.projectsService.GetListOfProjects(filter.name);
+      }else if(filter.category === 'course'){
+        return this.coursesService.GetListOfCourses(filter.name);
+      }
+    }
+    else{      
+      var projects = this.projectsService.GetListOfProjects();
+      var courses = this.coursesService.GetListOfCourses();
+      return courses.concat(projects);
+    }    
   }
 }

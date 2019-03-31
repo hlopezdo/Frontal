@@ -1,18 +1,55 @@
-<div class="p-2" data-role="window" data-resizable="true" data-draggable="true" 
-                 [attr.data-width]="windowConfig.width" 
-                 [attr.data-height]="windowConfig.height" 
-                 [attr.data-top]="windowConfig.top"
-                 [attr.data-left]="windowConfig.left">
-    <ul data-role="listview" [attr.data-view]="windowConfig.view">
-        <li data-caption="Projects">
-            <ul>
-                <li *ngFor = "let project of listOfProjects" [attr.data-icon]="project.icon" [attr.data-caption]="project.name" (click)="changeView()"></li>
-            </ul>
-        </li>
-        <li data-caption="Courses">
-            <ul>
-                <li *ngFor = "let course of listOfCourses" [attr.data-icon]="course.icon" [attr.data-caption]="course.name"></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+<mat-card class="fileExplorer" [ngClass]="{'maximizedPosition': maximized, 'minimizedPosition':!maximized}" cdkDrag>
+  <mat-card-content>
+    <div class="windowTitle">
+      <span class="leftWindow">File explorer</span>
+      <span class="rightWindow">
+        <mat-icon [inline]="true" (click)="minimize()" class="acctionButton">minimize</mat-icon>
+        <mat-icon [inline]="true" (click)="maximize()" class="acctionButton">fullscreen</mat-icon>
+        <mat-icon [inline]="true" (click)="close()" class="acctionButton close">close</mat-icon>
+      </span>
+    </div>
+    <div class="row navigationRow" *ngIf="maximized">
+      <div class="navigationButtons">
+        <mat-icon [inline]="true" class="navigationButton" (click)="back">arrow_back</mat-icon>
+        <mat-icon [inline]="true" class="navigationButton" (click)="forward">arrow_forward</mat-icon>
+        <mat-icon [inline]="true" class="navigationButton" (click)="up()">arrow_upward</mat-icon>
+      </div>
+      <div class="navigationSelect">
+        Inicio 
+        <mat-icon [inline]="true" class="navigationButton" (click)="back">chevron_right</mat-icon>
+      </div>
+      <div class="navigationSearch">
+        <input type="tel" placeholder="Search..." class="search">
+      </div>
+    </div>
+    <div id="content" class="content">
+      <table mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element">
+            <div>
+              <mat-icon class="material-icons tableIcon" [inline]="true">folder</mat-icon>
+              <span class="tableIconText">{{element.name}} </span>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date modified </th>
+          <td mat-cell *matCellDef="let element"> {{element.date | date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+          <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Size </th>
+          <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRow == row}"
+          (click)="highlight(row)" (dblclick)="open(row)">{{row}}
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
