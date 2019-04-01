@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+}
+
+.mat-column-name {
+  padding-left: 19px !important;
+}
+
+tr {
+  height: 2em !important;
+}
+
+td {
+  border-bottom: 0 !important;
+}
+
+.tableIcon {
+  font-size: 25px !important;
+  color: orange;
+}
+
+.tableIcon:hover {
+  background-color: inherit;
+}
+
+.tableIconText {
+  position: relative;
+  top: -7px;
+}
+
+.highlight {
+  background-color: rgba(100, 100, 255, 0.1);
+}

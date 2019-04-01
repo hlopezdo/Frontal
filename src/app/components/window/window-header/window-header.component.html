@@ -1,0 +1,22 @@
+<div class="windowTitle">
+  <span class="leftWindow">File explorer</span>
+  <span class="rightWindow">
+    <mat-icon [inline]="true" (click)="minimize()" class="acctionButton">minimize</mat-icon>
+    <mat-icon [inline]="true" (click)="maximize()" class="acctionButton">fullscreen</mat-icon>
+    <mat-icon [inline]="true" (click)="close()" class="acctionButton close">close</mat-icon>
+  </span>
+</div>
+<div class="row navigationRow" *ngIf="maximized">
+  <div class="navigationButtons">
+    <mat-icon [inline]="true" class="navigationButton" (click)="back">arrow_back</mat-icon>
+    <mat-icon [inline]="true" class="navigationButton" (click)="forward">arrow_forward</mat-icon>
+    <mat-icon [inline]="true" class="navigationButton" (click)="up()">arrow_upward</mat-icon>
+  </div>
+  <div class="navigationSelect">
+    Inicio 
+    <mat-icon [inline]="true" class="navigationSelectItem" (click)="back">chevron_right</mat-icon>
+  </div>
+  <div class="navigationSearch">
+    <input type="tel" placeholder="Search..." class="search">
+  </div>
+</div>

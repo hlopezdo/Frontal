@@ -1,0 +1,6 @@
+<mat-card class="window" [ngClass]="{'maximizedPosition': maximized, 'minimizedPosition':!maximized}" cdkDrag>
+  <mat-card-content>
+    <window-header [maximized]="maximized"></window-header>
+    <window-body [elements]="elements" *ngIf="maximized"></window-body>
+  </mat-card-content>
+</mat-card>

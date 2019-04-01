@@ -1,0 +1,26 @@
+.mat-card-header,
+.mat-card-header-text {
+  width: 100%;
+}
+
+.window {
+  width: 40em;
+  min-height: 25em;
+  position: fixed;
+  border-radius: 0;
+  padding: 0;
+}
+
+.minimizedPosition {
+  bottom: 5em;
+  left: 0;
+  width: 15em;
+  min-height: 0;
+}
+
+.maximizedPosition {
+  top: 5em;
+  left: 5em;
+  width: 40em;
+  min-height: 25em;
+}

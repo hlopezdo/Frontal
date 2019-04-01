@@ -1,17 +1,21 @@
-#taskBar {
+.taskBar {
   position: fixed;
   bottom: 0;
+  background-color: black;
+  height: 2em;
 }
-.taskBarIcon{
-  height:2.5rem;
-  width:2.5rem;
-  padding:0.5rem;
+
+img {
+  height: 2em;
+  width: 2em;
+  padding: 0.4em;
 }
-.taskBarIcon img {
-  height: 2rem;
-  width: 2rem;
-}
-.taskBarIcon:hover {
+
+img:hover {
   opacity: 0.6;
-  background-color: rgb(40,40,40);
+  background-color: rgb(40, 40, 40);
+}
+
+.taskbar-button {
+  cursor: default;
 }
